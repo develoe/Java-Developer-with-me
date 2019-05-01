@@ -5,17 +5,20 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import javafx.stage.Window;
 
-import javax.lang.model.element.NestingKind;
 
 /**
  * Hello world!
  *
  */
 public class App extends Application implements EventHandler<ActionEvent>
-{   private Button button;
+{   private Button button = new Button("Next Page");
+    Scene scene1,scene2;
+    Window window;
     public static void main( String[] args )
     {
         //TODO Create a app Home Inteligents
@@ -31,19 +34,9 @@ public class App extends Application implements EventHandler<ActionEvent>
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        primaryStage.setTitle("This is the Best Application");
-        button = new Button();
-        button.setText("Pres Me");
-        button.setOnAction(this);
-
-        StackPane layout = new StackPane();
-        layout.getChildren().add(button);
-
-
-
-        Scene scene = new Scene(layout,400,300);
-        primaryStage.setScene(scene);
-        primaryStage.show();
+        window =primaryStage;
+        Label label1 = new Label("This is a Main");
+        button.setOnAction(e -> window.setScene(scene2));
     }
 
     @Override
