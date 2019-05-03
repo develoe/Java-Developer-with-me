@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 
@@ -18,7 +19,7 @@ import javafx.stage.Window;
 public class App extends Application implements EventHandler<ActionEvent>
 {   private Button button = new Button("Next Page");
     Scene scene1,scene2;
-    Window window;
+    Stage window;
     public static void main( String[] args )
     {
         //TODO Create a app Home Inteligents
@@ -36,7 +37,16 @@ public class App extends Application implements EventHandler<ActionEvent>
     public void start(Stage primaryStage) throws Exception {
         window =primaryStage;
         Label label1 = new Label("This is a Main");
-        button.setOnAction(e -> window.setScene(scene2));
+        button.setOnAction(this);
+        VBox layout = new VBox(20);
+        layout.getChildren().addAll(label1,button);
+        scene1 = new Scene(layout,250 ,300);
+
+        window.setTitle("Main");
+        window.setScene(scene1);
+        window.show();
+
+
     }
 
     @Override
