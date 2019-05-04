@@ -37,7 +37,7 @@ public class App extends Application implements EventHandler<ActionEvent>
     public void start(Stage primaryStage) throws Exception {
         window =primaryStage;
         Label label1 = new Label("This is a Main");
-        button.setOnAction(this);
+        button.setOnAction(event -> Display.display("WARING","INCEARCA SA INTRODUCI CE TREBUIEK"));
         VBox layout = new VBox(20);
         layout.getChildren().addAll(label1,button);
         scene1 = new Scene(layout,250 ,300);
