@@ -3,6 +3,7 @@ package ro.git;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -16,9 +17,10 @@ import javafx.stage.Window;
  * Hello world!
  *
  */
-public class App extends Application implements EventHandler<ActionEvent>
+public class App extends Application
 {   private Button button = new Button("Next Page");
-    Scene scene1,scene2;
+    private static Button button1 = new Button("Message");
+    Scene scene1;
     Stage window;
     public static void main( String[] args )
     {
@@ -38,8 +40,17 @@ public class App extends Application implements EventHandler<ActionEvent>
         window =primaryStage;
         Label label1 = new Label("This is a Main");
         button.setOnAction(event -> Display.display("WARING","INCEARCA SA INTRODUCI CE TREBUIEK"));
-        VBox layout = new VBox(20);
-        layout.getChildren().addAll(label1,button);
+
+        button1.setOnAction(event -> {
+            boolean result = Display.confirmBox("Callendar ", "check it out" );
+            System.out.println(result);
+
+        });
+
+        VBox layout = new VBox(30);
+        layout.getChildren().addAll(label1,button,button1);
+        layout.setAlignment(Pos.CENTER);
+
         scene1 = new Scene(layout,250 ,300);
 
         window.setTitle("Main");
@@ -49,10 +60,7 @@ public class App extends Application implements EventHandler<ActionEvent>
 
     }
 
-    @Override
-    public void handle(ActionEvent event) {
-        if (event.getSource()==button){
-            System.out.println("ce faci");
-        }
-    }
+
+
+
 }
