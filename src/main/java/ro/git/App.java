@@ -37,14 +37,17 @@ public class App extends Application
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+        // my windows settings
         window =primaryStage;
         window.setOnCloseRequest(event -> {
             event.consume();
             closeProgram();});
 
+        // Declaration and attribution of the text
         Label label1 = new Label("This is a Main");
         button.setOnAction(event -> Display.display("WARING","INCEARCA SA INTRODUCI CE TREBUIEK"));
         Button closeButton = new Button("Close");
+        // Settings my Button
         closeButton.setOnAction(event -> {
             event.consume();
             closeProgram();
@@ -60,11 +63,11 @@ public class App extends Application
             }
 
         });
-
+        // layout
         VBox layout = new VBox(30);
         layout.getChildren().addAll(label1,button,button1,closeButton);
         layout.setAlignment(Pos.CENTER);
-
+        // scens
         scene1 = new Scene(layout,250 ,300);
 
         window.setTitle("Main");
@@ -74,7 +77,7 @@ public class App extends Application
 
     }
 
-
+    // close program
     public void closeProgram() {
         boolean answer = Display.confirmBox("Save" ,"Do you want this save documnet");
         if (answer){

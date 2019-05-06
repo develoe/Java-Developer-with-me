@@ -23,18 +23,19 @@ public class Display {
     static Stage window;
     public static void display(String title, String message) {
          window = new Stage();
-
+        // Block all the other window application
+        // my windows settings
         window.initModality(Modality.APPLICATION_MODAL);
         window.setTitle(title);
         window.setMinWidth(350);
-
+        // declaration and attribution of the text
         Label label1 = new Label();
         label1.setText(message);
 
         Button closeButton = new Button("Close The Window");
         closeButton.setOnAction(event -> window.close());
 
-
+// Setting, declarations and attribution  of the Layout
         VBox layout = new VBox(20);
         layout.getChildren().addAll(label1,closeButton);
         layout.setAlignment(Pos.CENTER);
@@ -67,7 +68,6 @@ public class Display {
             window.close();
 
         });
-        Button buttonPr = new Button("hei");
 
 
         VBox center = new VBox(10);
