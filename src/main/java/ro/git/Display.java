@@ -2,6 +2,7 @@ package ro.git;
 
 import javafx.geometry.Pos;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.application.Application;
@@ -45,7 +46,7 @@ public class Display {
         window.showAndWait();
 
     }
-    public static boolean confirmBox(String title,String message){
+    public static boolean confirmBox(String title,String message) {
         window = new Stage();
         window.setMinHeight(120);
         window.setMinWidth(300);
@@ -57,6 +58,7 @@ public class Display {
         Button yesButton = new Button("Yes");
         Button closeButton = new Button("No");
         yesButton.setOnAction(event -> {
+
             result = true;
             window.close();
         });
@@ -65,13 +67,23 @@ public class Display {
             window.close();
 
         });
+        Button buttonPr = new Button("hei");
 
-        VBox layout = new VBox(25);
-        layout.setAlignment(Pos.CENTER);
-        layout.getChildren().addAll(label,yesButton,closeButton);
 
-        Scene scene = new Scene(layout);
+        VBox center = new VBox(10);
+        VBox left = new VBox(10);
+        VBox right = new VBox(30);
+        center.setAlignment(Pos.TOP_CENTER);
+        center.getChildren().add(label);
+        left.getChildren().add(yesButton);
+        right.getChildren().addAll(closeButton);
 
+        BorderPane layout = new BorderPane();
+        layout.setTop(center);
+        layout.setRight(right);
+        layout.setLeft(left);
+
+        Scene scene = new Scene(layout,300,250);
 
         window.setScene(scene);
         window.showAndWait();
